@@ -1,3 +1,43 @@
+<script>
+export default {
+  name: "login-component",
+  data() {
+    return {
+      post: {},
+      error: null,
+      errorInfo: null,
+    };
+  },
+  methods: {
+    async createPost() {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user: this.post }),
+      };
+      fetch("http://localhost:8000/login", requestOptions)
+        .then((res) => res.json())
+        .then(
+          (data) => (
+            (this.error = data.error),
+            (this.errorInfo = data.error_info),
+            this.errorInfo || this.error
+              ? console.log(data)
+              : (window.location = "/"),
+            (this.value = {
+              id: data.user._id,
+              email: data.user.email,
+              roles: data.user.roles,
+            }),
+            localStorage.setItem("data_user", JSON.stringify(this.value))
+          )
+        )
+        .catch((err) => console.log(err));
+    },
+  },
+};
+</script>
+
 <template>
   <div class="flex justify-center mt-[10%]">
     <form
@@ -44,39 +84,3 @@
     </form>
   </div>
 </template>
-
-<script>
-export default {
-  name: "login-component",
-  data() {
-    return {
-      post: {},
-      error: null,
-      errorInfo: null,
-    };
-  },
-  methods: {
-    async createPost() {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user: this.post }),
-      };
-      fetch("http://localhost:8000/login", requestOptions)
-        .then((res) => res.json())
-        .then(
-          (data) => (
-            (this.error = data.error),
-            (this.errorInfo = data.error_info),
-            this.errorInfo || this.error
-              ? console.log(data)
-              : (window.location = "/"),
-            (this.value = { id: data.user._id, email: data.user.email }),
-            localStorage.setItem("data_user", JSON.stringify(this.value))
-          )
-        )
-        .catch((err) => console.log(err));
-    },
-  },
-};
-</script>

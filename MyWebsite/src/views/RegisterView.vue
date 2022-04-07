@@ -1,21 +1,15 @@
+<script setup>
+import { RouterLink } from "vue-router";
+import Register from "../components/Register.vue";
+</script>
+
 <template>
   <div class="register">
     <Register />
-    <router-link
+    <RouterLink
       class="flex justify-center cursor-pointer hover:text-gray-600 hover:underline"
       to="/login"
-      >Vous avez déjà un compte ?</router-link
+      >Vous avez déjà un compte ?</RouterLink
     >
   </div>
 </template>
-
-<script>
-import Register from "../components/Register.vue";
-
-export default {
-  name: "Register-view",
-  components: {
-    Register,
-  },
-};
-</script>

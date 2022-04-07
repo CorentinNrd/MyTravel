@@ -7,7 +7,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <main class="text-center">
-        <h1>Bonjour {{ user.email }}</h1>
-    </main>
+  <main class="text-center">
+    <h1>Bonjour {{ user.email }}</h1>
+  </main>
 </template>

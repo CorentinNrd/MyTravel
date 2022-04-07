@@ -20,9 +20,11 @@ app.use(session({
 
 const register = require('./Routes/RegisterRoutes')
 const login = require('./Routes/LoginRoutes')
+const travel = require('./Routes/TravelRoutes')
 
 app.use("/register", register);
 app.use("/login", login);
+app.use("/travel", travel)
 
 app.get('/',  (req, res) => {
     console.log('ici')

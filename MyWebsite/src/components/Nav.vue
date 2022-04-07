@@ -24,6 +24,11 @@ function logout() {
         <RouterLink to="/login">Connexion</RouterLink>
         <RouterLink to="/register">Inscription</RouterLink>
       </nav>
+      <nav class="flex gap-5" v-else-if="user.roles == 'Admin'">
+        <RouterLink to="/account">Compte</RouterLink>
+        <RouterLink to="/dashboard">Dashboard</RouterLink>
+        <button @click="logout">Déconnexion</button>
+      </nav>
       <nav class="flex gap-5" v-else>
         <RouterLink to="/account">Compte</RouterLink>
         <button @click="logout">Déconnexion</button>
