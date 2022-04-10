@@ -12,6 +12,10 @@ function search() {
     .then((res) => res.json())
     .then((data) => (travel.value = data));
 }
+
+function reserve(id) {
+  alert("l'id du voyage est " + id);
+}
 </script>
 
 <template>
@@ -31,21 +35,8 @@ function search() {
           name="destination"
           v-model="post.destination"
         />
-        <label
-          class="block text-gray-700 text-left text-sm font-bold mb-2 mt-5"
-          for="price"
-        >
-          Prix
-        </label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          id="price"
-          name="price"
-          v-model="post.price"
-        />
         <button
-          class="w-full border font-bold py-2 px-4 mt-5 rounded focus:outline-none focus:shadow-outline hover:bg-blue-400 hover:text-white"
+          class="w-full border font-bold py-2 px-4 mt-5 rounded focus:outline-none focus:shadow-outline bg-blue-200 hover:bg-blue-400 hover:text-white"
           type="submit"
         >
           chercher
@@ -57,11 +48,19 @@ function search() {
         <li
           v-for="travels in travel"
           v-bind:key="travels.id"
-          class="w-1/2 text-left mt-10"
+          class="w-1/2 text-left mt-10 border rounded-sm"
         >
-          <p>{{ travels.destination }}</p>
-          <p>{{ travels.price }}</p>
-          <p>{{ travels.informations }}</p>
+          <p class="text-lg ml-3 mr-3 mt-3">{{ travels.destination }}</p>
+          <p class="ml-3 mr-3 text-xs">{{ travels.price }}</p>
+          <p class="ml-3 mr-3 text-sm">{{ travels.informations }}</p>
+          <p class="ml-3 mr-3 mb-3 mt-2 text-smf">
+            <button
+              @click="reserve(travels._id)"
+              class="w-full border py-2 px-4 rounded bg-blue-200 hover:bg-blue-400"
+            >
+              Reserver
+            </button>
+          </p>
         </li>
       </ul>
     </div>

@@ -14,22 +14,22 @@ function logout() {
 
 <template>
   <header>
-    <div class="flex justify-between mr-5 ml-5">
-      <nav class="flex gap-5">
+    <div class="flex justify-between h-[50px] items-center bg-black text-white">
+      <nav class="flex gap-5 ml-5">
         <RouterLink to="/">Accueil</RouterLink>
         <RouterLink to="/travels">Voyages</RouterLink>
         <RouterLink to="/about">Qui sommes-nous ?</RouterLink>
       </nav>
-      <nav class="flex gap-5" v-if="!user">
+      <nav class="flex gap-5 mr-5" v-if="!user">
         <RouterLink to="/login">Connexion</RouterLink>
         <RouterLink to="/register">Inscription</RouterLink>
       </nav>
-      <nav class="flex gap-5" v-else-if="user.roles == 'Admin'">
+      <nav class="flex gap-5 mr-5" v-else-if="user.roles == 'Admin'">
         <RouterLink to="/account">Compte</RouterLink>
         <RouterLink to="/dashboard">Dashboard</RouterLink>
-        <button @click="logout">Déconnexion</button>
+        <button class="hover:underline" @click="logout">Déconnexion</button>
       </nav>
-      <nav class="flex gap-5" v-else>
+      <nav class="flex gap-5 mr-5" v-else>
         <RouterLink to="/account">Compte</RouterLink>
         <button @click="logout">Déconnexion</button>
       </nav>

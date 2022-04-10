@@ -69,14 +69,6 @@ export default {
         rows="10"
         v-model="post.informations"
       ></textarea>
-      <!-- <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        type="text"
-        name="price"
-        id="price"
-        placeholder="price"
-        v-model="post.price"
-      /> -->
       <div class="flex justify-center mt-5">
         <button
           class="border font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-gray-700 hover:text-white"
